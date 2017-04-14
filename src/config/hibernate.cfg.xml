@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!--url信息 -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/lqmsql</property>
+		<!--数据库方言信息 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!--用户名 -->
+		<property name="connection.username">root</property>
+		<!--密码 -->
+		<property name="connection.password"></property>
+		<!--数据库驱动信息 -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!--是否在后台显示Hibernate用到的SQL语句，开发时设置为true，便于差错，程序运行时可以在Eclipse的控制台显示Hibernate的执行Sql语句。项目部署后可以设置为false，提高运行效率-->   
+        <property name="hibernate.show_sql">true</property>
+        <!-- 格式化输出sql语句 -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 如果没有schema就创建，有就更新。 -->
+        <property name="hbm2ddl.auto">update</property>
+		
+		<!--指定Hibernate映射文件路径 -->
+		<mapping resource="entity/Admin.hbm.xml" />
+		<mapping resource="entity/Classes.hbm.xml" />
+		<mapping resource="entity/Student.hbm.xml" />
+		<mapping resource="entity/Teacher.hbm.xml" />
+		<mapping resource="entity/Score.hbm.xml" />
+
+		<!-- <mapping class="com.test.bean.Test" /> -->
+	</session-factory>
+</hibernate-configuration>

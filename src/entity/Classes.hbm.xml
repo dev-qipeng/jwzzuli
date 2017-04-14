@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="entity.Classes" table="classes" catalog="lqmsql">
+		<id name="csId" type="java.lang.Integer">
+			<column name="cs_id" />
+			<generator class="identity" />
+		</id>
+		<property name="cname" type="string">
+			<column name="cName" length="60" />
+		</property>
+		<property name="cmark" type="string">
+			<column name="cmark" length="50" />
+		</property>
+		<property name="courTime" type="string">
+			<column name="cour_time" length="50" />
+		</property>
+		<property name="roomId" type="string">
+			<column name="room_id" length="50" />
+		</property>
+		<property name="teaId" type="string">
+			<column name="tea_id" length="50" />
+		</property>
+		<property name="chooseMax" type="java.lang.Integer">
+			<column name="chooseMax" />
+		</property>
+		<property name="chooseCurNum" type="java.lang.Integer">
+			<column name="chooseCurNum" />
+		</property>
+		<set name="score" table="score" lazy="false" cascade="all" inverse="true">
+			<key column="cs_id" />
+			<one-to-many class="entity.Score" />
+		</set>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="entity.Student" table="student" catalog="lqmsql">
+		<id name="stId" type="java.lang.Integer">
+			<column name="st_id" />
+			<generator class="identity" />
+		</id>
+		<property name="username" type="string">
+			<column name="username" length="100" not-null="true" />
+		</property>
+		<property name="sno" type="string">
+			<column name="sno" length="50" not-null="true" />
+		</property>
+		<property name="email" type="string">
+			<column name="email" length="50" />
+		</property>
+		<property name="tel" type="string">
+			<column name="tel" length="50" />
+		</property>
+		<property name="mark" type="string">
+			<column name="mark" length="50" />
+		</property>
+		<property name="sex" type="string">
+			<column name="sex" length="10" />
+		</property>
+		<property name="department" type="string">
+			<column name="department" length="30" />
+		</property>
+		<property name="jiguan" type="string">
+			<column name="jiguan" length="60" />
+		</property>
+		<property name="password" type="string">
+			<column name="password" length="20" />
+		</property>
+		<property name="image" type="string">
+			<column name="image" length="100" />
+		</property>
+		<property name="maxClasses" type="java.lang.Integer">
+			<column name="maxClasses" length="50" />
+		</property>
+		<set name="score" table="score" lazy="true" cascade="all" inverse="true">
+			<key column="st_id" />
+			<one-to-many class="entity.Score" />
+		</set>
+	</class>
+</hibernate-mapping>

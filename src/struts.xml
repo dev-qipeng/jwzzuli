@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<include file="example.xml" />
+	<package name="default" extends="struts-default">
+		<action name="login" class="action.Login">
+			<result name="success">/student/index.jsp</result>
+			<result name="tsuccess">/teacher/index.jsp</result>
+			<result name="asuccess">/admin/index.jsp</result>
+			<result name="input" type="redirect">/index.jsp</result>
+		</action>
+		<action name="skanStudent" class="action.student.SkanStudent">
+			<result name="success">/student/stuinfo/skanStudent.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="forUpdateStudent" class="action.student.SkanStudent"
+			method="forUpdate">
+			<result name="success">/student/stuinfo/updateStudent.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="updateStudent" class="action.student.UpdateStudent">
+			<result name="success" type="redirect">/skanStudent</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="updatePwd" class="action.student.UpdateStudent"
+			method="updatePwd">
+			<result name="success" type="redirect">/skanStudent</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="queryScore" class="action.student.QueryScore">
+			<result name="success">/student/stuinfo/queryScore.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="chooseClasses" class="action.student.ChooseClasses">
+			<result name="success">/student/chooclass/chooseClasses.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="xuanxiu" class="action.student.ChooseClasses"
+			method="xuanXiu">
+			<result name="success">/student/chooclass/chooSuccess.jsp</result>
+			<result name="input">/student/chooclass/chooFail.jsp</result>
+		</action>
+		<action name="myClasses" class="action.student.ChooseClasses"
+			method="yiXuan">
+			<result name="success">/student/chooclass/yiXuanClasses.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="deleteCourse" class="action.student.ChooseClasses"
+			method="deleteCourse">
+			<result name="success">/student/chooclass/deleteSuccess.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+		<action name="upload" class="action.student.FileUpAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">1000000000</param>
+				<param name="allowedTypes">image/gif,image/png,image/jpeg,image/jpg,image/pjpeg,</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/student/stuinfo/upSuccess.jsp</result>
+			<result name="input">/student/error.jsp</result>
+		</action>
+	</package>
+</struts>
